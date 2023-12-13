@@ -24,11 +24,17 @@ const LogCard = ({ log }) => {
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
           Date : {log.date}
         </Typography>
-        <Typography variant="body2">hours logged : {log.duration}h</Typography>
+        <Typography variant="body2">Hours logged : {log.duration}h</Typography>
         <Box position="absolute" sx={{ top: "0", right: "0" }}>
           <Box display="flex" sx={{ gap: 2, margin: "1rem" }}>
-            <EditIcon onClick={() => dispatch(openModal(log.Id))} />
-            <DeleteIcon onClick={() => dispatch(deleteLog(log.Id))} />
+            <EditIcon
+              color="success"
+              onClick={() => dispatch(openModal(log.Id))}
+            />
+            <DeleteIcon
+              color="error"
+              onClick={() => dispatch(deleteLog(log.Id))}
+            />
           </Box>
         </Box>
       </CardContent>

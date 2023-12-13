@@ -58,10 +58,13 @@ export const getTotalTimeLoggedForToday = (logs) => {
   const todayFormatted = `${today.getDate()}.${
     today.getMonth() + 1
   }.${today.getFullYear()}`;
-  console.log(todayFormatted);
+
   const totalTimeToday = logs.filter(
     (log) => convert(log.date) === todayFormatted
   );
+  if (totalTimeToday[0]) {
+    return totalTimeToday[0].duration;
+  }
 
-  return totalTimeToday[0].duration;
+  return 0;
 };
