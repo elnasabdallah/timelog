@@ -32,13 +32,13 @@ const Home = () => {
         <PieChart
           labelShare="logged this week"
           labelTotal="unlogged"
-          share={10}
+          share={0}
           total={20}
         />
         <PieChart
           labelShare="logged this month"
           labelTotal="unlogged"
-          share={10}
+          share={0}
           total={20}
         />
       </Box>
