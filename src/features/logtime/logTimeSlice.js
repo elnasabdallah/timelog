@@ -50,6 +50,7 @@ export const formSlice = createSlice({
 
       state.openModal = false;
       saveInLocalStorage(state.logs);
+      state.activeLog = null;
     },
     deleteLog: (state, action) => {
       const { Id } = action.payload;
@@ -57,6 +58,7 @@ export const formSlice = createSlice({
 
       state.logs.splice(index, 1);
       saveInLocalStorage(state.logs);
+      state.activeLog = null;
     },
     openModal: (state, action) => {
       if (action.payload) {
