@@ -1,7 +1,7 @@
-import { React } from "react";
+import { React, useEffect } from "react";
 import LogCard from "src/components/logCard/LogCard";
-import { useSelector } from "react-redux";
-import { selectlog, today } from "src/features/logtime/logTimeSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectlog, daylogged, today } from "src/features/logtime/logTimeSlice";
 import { Box, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import PieChart from "src/components/chart/PieChart";
@@ -11,10 +11,14 @@ const Home = () => {
   const logs = useSelector(selectlog);
   const loggedToday = useSelector(today);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
+  const dispatch = useDispatch();
   const style = {
     width: isMobile ? "90%" : "50%",
   };
+
+  useEffect(() => {
+    dispatch(daylogged());
+  });
 
   return (
     <Box>
