@@ -75,14 +75,18 @@ export const formSlice = createSlice({
     },
     stopLogging: (state) => {
       const date = new Date();
-      const duration = Date.now() - state.startTime;
+      //   const duration = Date.now() - state.startTime;
+      const msDifference = Math.abs(Date.now() - state.startTime);
+      const hoursDifference = msDifference / (1000 * 60 * 60);
+
       const description = "Tracked";
       state.logs.push({
         Id: uuid(),
         description: description,
         date: formatDate(date),
-        duration: Math.floor(duration / 60 / 60),
+        duration: hoursDifference.toFixed(3),
       });
+
       state.startTime = null;
       saveInLocalStorage(state.logs);
     },
